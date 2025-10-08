@@ -25,7 +25,7 @@ periódicamente y un servidor central los asigne a clientes según proximidad.
 * python -c "import Pyro5; import geopy; print('Instalación correcta')" 
 ---
 ## 4. Archivos del proyecto 
-proyecto_uber_distribuido/ 
+proyecto_uber_distribuido/  
 │  
 ├── servidor.py   
 ├── vehiculo.py  

@@ -25,11 +25,11 @@ python -c "import Pyro5; import geopy; print('Instalación correcta')"
 ---
 4. Archivos del proyecto 
 proyecto_uber_distribuido/ 
-│ 
-├── servidor.py 
-├── vehiculo.py 
-├── cliente.py 
-├── utils.py 
+│  
+├── servidor.py   
+├── vehiculo.py  
+├── cliente.py  
+├── utils.py  
 └── README.md
 ---
 6. Salida visual esperada 

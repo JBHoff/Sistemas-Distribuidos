@@ -9,7 +9,7 @@ def main():
     lon = float(input(" Ingresa tu longitud (ej. -99.1320): ")) 
     validar_coordenadas(lat, lon) 
  
-    ns = Pyro5.api.locate_ns() 
+    ns = Pyro5.api.locate_ns(host="192.168.1.1",port=9090) 
 #   ns = Pyro5.api.locate_ns()
     uri = ns.lookup("servidor.central") 
     servidor = Pyro5.api.Proxy(uri) 

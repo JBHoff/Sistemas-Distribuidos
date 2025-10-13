@@ -29,8 +29,8 @@ def main():
     boletos_iniciales = int(input(" Ingrese el número total de boletos disponibles: ")) 
     server = TicketServer(boletos_iniciales) 
  
-    daemon = Pyro5.api.Daemon(host="192.168.1.2") 
-    ns = Pyro5.api.locate_ns(host="192.168.1.2",port=9090) 
+    daemon = Pyro5.api.Daemon(host="172.20.10.9") 
+    ns = Pyro5.api.locate_ns(host="172.20.10.9",port=9090) 
 #   daemon = Pyro5.api.Daemon() Localhost
 #   ns = Pyro5.api.locate_ns()  Localhost
     uri = daemon.register(server) 

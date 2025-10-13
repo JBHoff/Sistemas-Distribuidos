@@ -8,8 +8,8 @@ def main():
     validar_coordenadas(lat, lon) 
     id_cliente = input(" ID del cliente: ").strip() 
  
-#   ns = Pyro5.api.locate_ns(host="192.168.1.1",port=9090) 
-    ns = Pyro5.api.locate_ns() #Localhost y puerto automatico
+    ns = Pyro5.api.locate_ns(host="192.168.1.53",port=9090) 
+#    ns = Pyro5.api.locate_ns() #Localhost y puerto automatico
     uri = ns.lookup("servidor.central") 
     servidor = Pyro5.api.Proxy(uri) 
  

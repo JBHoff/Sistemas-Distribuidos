@@ -20,7 +20,7 @@ def berkeley_sync(server_time, client_time):
  
 def main(): 
     cliente = input("Ingrese su nombre de cliente: ") 
-    ns = Pyro5.api.locate_ns(host="192.168.1.2",port=9090) 
+    ns = Pyro5.api.locate_ns(host="172.20.10.9",port=9090) 
 #   ns = Pyro5.api.locate_ns()
     uri = ns.lookup("ticket.server") 
     server = Pyro5.api.Proxy(uri) 

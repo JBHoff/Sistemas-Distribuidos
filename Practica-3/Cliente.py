@@ -2,7 +2,7 @@ import requests
 import threading 
 import time 
  
-SERVER_URL = "http://192.168.1.53:5050" 
+SERVER_URL = "http://172.20.10.9:5050" 
  
 class ChatClient: 
     def __init__(self): 

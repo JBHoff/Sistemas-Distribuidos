@@ -13,8 +13,9 @@ def main():
 #    ns = Pyro5.api.locate_ns()
     uri = ns.lookup("servidor.central") 
     servidor = Pyro5.api.Proxy(uri) 
- 
-    print(f" {id_vehiculo} activo. Enviando coordenadas...") 
+    servidor._pyroBind()
+
+    print(f" {id_vehiculo} activo. Enviando coordenadas cada 5s ...") 
     while True: 
         servidor.registrar_vehiculo(id_vehiculo, lat, lon) 
         lat += random.uniform(-0.0005, 0.0005) 

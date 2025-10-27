@@ -48,12 +48,13 @@ class ServidorCentral:
         return False 
  
 def main(): 
-    daemon = Pyro5.api.Daemon(host="192.168.1.53",port=9090) 
+    daemon = Pyro5.api.Daemon(host="192.168.1.53") 
     ns = Pyro5.api.locate_ns(host="192.168.1.53",port=9090) 
-#    ns = Pyro5.api.locate_ns()
+#   ns = Pyro5.api.locate_ns()
     uri = daemon.register(ServidorCentral()) 
     ns.register("servidor.central", uri) 
     print(" Servidor registrado en Name Server como 'servidor.central'") 
+    print(f" Esperando solicitudes en {uri}...")
     daemon.requestLoop() 
  
 if __name__ == "__main__": 

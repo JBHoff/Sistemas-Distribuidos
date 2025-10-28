@@ -1,6 +1,6 @@
 # Coordina las escrituras y lecturas entre réplicas: 
 import Pyro5.api 
-from shared import PYRO_HOST, PYRO_PORT, REPLICA1_URI, REPLICA2_URI 
+from shared import PYRO_HOST, PYRO_PORT, REPLICA1_URI, REPLICA2_URI, REPLICA3_URI
  
 class Middleware: 
     @Pyro5.api.expose 
@@ -30,6 +30,18 @@ class Middleware:
         except Exception as e: 
             responses.append(f"Error réplica2: {e}") 
             print(f"[Middleware] Error enviando a Replica2: {e}") 
+
+        # Replica 3 
+        try: 
+            r3 = Pyro5.api.Proxy(REPLICA3_URI) 
+            print(f"[Middleware] Enviando clave '{key}' -> '{value}' a Replica3") 
+            resp3 = r3.write(key, value) 
+            print(f"[Middleware] Respuesta de Replica3: {resp3}") 
+            responses.append(resp3) 
+            r3._pyroRelease() 
+        except Exception as e: 
+            responses.append(f"Error réplica3: {e}") 
+            print(f"[Middleware] Error enviando a Replica3: {e}") 
  
         return responses 
  
@@ -49,9 +61,16 @@ class Middleware:
                 r2._pyroRelease() 
                 print(f"[Middleware] Lectura clave '{key}' desde Replica2 -> {val}") 
                 return val 
-            except Exception as e: 
-                print(f"[Middleware] Error leyendo clave '{key}': {e}") 
-                return f"Error al leer: {e}" 
+            except:
+                try: 
+                    r3 = Pyro5.api.Proxy(REPLICA3_URI) 
+                    val = r3.read(key) 
+                    r3._pyroRelease() 
+                    print(f"[Middleware] Lectura clave '{key}' desde Replica3 -> {val}") 
+                    return val
+                except Exception as e: 
+                    print(f"[Middleware] Error leyendo clave '{key}': {e}") 
+                    return f"Error al leer: {e}" 
  
 if __name__ == "__main__": 
     mw = Middleware() 

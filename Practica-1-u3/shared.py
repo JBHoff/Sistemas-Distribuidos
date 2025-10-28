@@ -7,4 +7,5 @@ PYRO_PORT = 5000
  
 # URIs de las réplicas 
 REPLICA1_URI = "PYRO:replica1@localhost:5001" 
-REPLICA2_URI = "PYRO:replica2@localhost:5002" 
+REPLICA2_URI = "PYRO:replica2@localhost:5002"
+REPLICA3_URI = "PYRO:replica3@localhost:5003" 

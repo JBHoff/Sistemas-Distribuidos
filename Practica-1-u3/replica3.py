@@ -28,8 +28,8 @@ class Replica:
         return val 
  
 if __name__ == "__main__": 
-    replica = Replica("R1", "replica1_db") 
-    daemon = Pyro5.api.Daemon(host=PYRO_HOST, port=5001) 
-    uri = daemon.register(replica, objectId="replica1") 
-    print(f"Replica1 lista en: {uri}") 
+    replica = Replica("R3", "replica3_db") 
+    daemon = Pyro5.api.Daemon(host=PYRO_HOST, port=5003) 
+    uri = daemon.register(replica, objectId="replica3") 
+    print(f"Replica2 lista en: {uri}") 
     daemon.requestLoop() 

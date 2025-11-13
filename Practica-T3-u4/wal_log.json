@@ -1,0 +1,14 @@
+[
+  {
+    "tx": 5249,
+    "state": "PREPARED"
+  },
+  {
+    "tx": 5249,
+    "state": "COMMIT"
+  },
+  {
+    "tx": 5249,
+    "state": "COMMIT"
+  }
+]

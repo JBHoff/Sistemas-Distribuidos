@@ -1,0 +1,1 @@
+Practica Incompleta se hace en una maquina virtual de preferencia Ubuntu Linux

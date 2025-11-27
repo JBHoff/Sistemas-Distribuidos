@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  server1:
+    build: .
+    container_name: bank_server1
+    command: ["python3", "server.py", "server1", "5001", "bank1"]
+    networks:
+      - banknet
+    volumes:
+      - ./backups/server1:/backups
+
+  server2:
+    build: .
+    container_name: bank_server2
+    command: ["python3", "server.py", "server2", "5002", "bank2"]
+    networks:
+      - banknet
+    volumes:
+      - ./backups/server2:/backups
+
+  server3:
+    build: .
+    container_name: bank_server3
+    command: ["python3", "server.py", "server3", "5003", "bank3"]
+    networks:
+      - banknet
+    volumes:
+      - ./backups/server3:/backups
+
+  middleware:
+    build: .
+    container_name: bank_middleware
+    command: ["python3", "middleware.py"]
+    networks:
+      - banknet
+    depends_on:
+      - server1
+      - server2
+      - server3
+
+networks:
+  banknet:
+    driver: bridge
